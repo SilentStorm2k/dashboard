@@ -50,29 +50,38 @@ main {
 
 .content {
     display: grid;
-    grid-template: 1fr 1fr 20fr 20fr / 3fr 1fr;
+    grid-template: minmax(0px, 100px) minmax(0, 150px) 6fr 6fr / 3fr 1fr;
 }
 
 .searchbar {
     grid-area: 1 / 1 / 2 / 3;
-    display: grid;
-    grid-template-columns: 10% auto repeat(3, 5%) 10%;
-    gap: 1rem;
-    justify-content: stretch;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
+    margin: 1rem;
+}
+
+.left,
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.left > input {
+    flex: 1;
+}
+
+.left > *,
+.right > * {
     margin: 0 1rem;
 }
-
-.searchbar > input {
-    margin-left: 0;
-    justify-self: stretch;
-}
-
-.searchbar a:first-of-type {
-    grid-column: 4 / 5;
-}
-
 
 .searchbar img,
 .searchbar a:has(> img),
@@ -84,7 +93,48 @@ main {
     grid-area: 2 / 1 / 3 / 3;
     display: grid;
     grid-template: 1fr 1fr / repeat(2, 1fr) 4fr repeat(3, 1fr);
+    margin: 1rem;
+    gap: 1rem;
 }
+
+.header img {
+    grid-row: 1 / 3;
+    align-self: center;
+}
+
+.header h4 {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self: center;
+    margin-bottom: 0.1rem;
+}
+
+.header h2 {
+    grid-area: 2 / 2 / 3 / 3;
+    justify-self: center;
+    margin-top: 0.1rem;
+}
+
+.header button:first-of-type {
+    grid-column: 4 / 5;
+}
+
+.header button:first-of-type + button{
+    grid-column: 5 / 6;
+}
+
+.header button:first-of-type + button + button{
+    grid-column: 6 / 7;
+    margin-right: 2rem;
+}
+
+.header button {
+    grid-row: 1/3;
+    align-self: center;
+    justify-self: center;
+    width: 4rem;
+}
+
+
 
 
 .project-container {
@@ -119,7 +169,7 @@ footer img {
     width: 1.5rem;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 750px) {
     .sidebar > a {
         width: 5rem;
         overflow: hidden;
@@ -129,4 +179,16 @@ footer img {
     .sidebar h3 {
         visibility: hidden;
     }
+
+    .header {
+        grid-template: repeat(3, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr));
+        
+    }
+    .header button:first-of-type,
+    .header button:first-of-type + button,
+    .header button:first-of-type + button + button {
+        grid-row: 3;
+        grid-column: auto;
+    }
+    
 }
