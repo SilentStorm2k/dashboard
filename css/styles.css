@@ -134,11 +134,18 @@ main {
     width: 4rem;
 }
 
-
-
-
 .project-container {
     grid-area: 3 / 1 / 5 / 2;
+    display: grid;
+    grid-template-rows: minmax(0, 100px) 1fr;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 400px));
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin: 1rem;
 }
 
 .announcement-container {
