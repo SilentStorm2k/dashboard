@@ -150,6 +150,16 @@ main {
 
 .announcement-container {
     grid-area: 3 / 2 / 4 / 3;
+    display: grid;
+    grid-template-rows: minmax(0, 100px) 1fr;
+}
+
+.announcements {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 400px));
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin: 1rem;
 }
 
 .trending-container {
@@ -196,6 +206,18 @@ footer img {
     .header button:first-of-type + button + button {
         grid-row: 3;
         grid-column: auto;
+    }
+
+    .project-container {
+        grid-area: 3 / 1 / 5 / 3;
+    }
+
+    .announcement-container {
+        grid-area: 6 / 1 / 7 / 3;
+    }
+    
+    .trending-container {
+        grid-area: 7 / 1 / 8 / 3;
     }
     
 }
